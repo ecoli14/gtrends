@@ -1,0 +1,66 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+install.packages('gtrendsR')
+library (gtrendsR)
+```
+
+```{r}
+plot(gtrendsR::gtrends(keyword = c("CHOOSE A WORD(S)"), geo = "US", time = "2006-01-01 2018-12-05"))
+```
+
+Create and plot a dataframe comparing Canada and the US
+```{r}
+df <- gtrends(c("YOUR WORD(S)"), geo = c("CA", "US"), time = "2006-01-01 2018-12-05")
+plot(df)
+```
+
+Create and plot a dataframe comparing two words
+```{r}
+df2 <- gtrends(c("Beto O'Rourke", "Ted Cruz"), geo = c("US"), time = "2017-01-01 2018-12-05")
+plot(df2)
+```
+
+
+```{r}
+#define the keywords
+keywords=c("YOUR WORD")
+#set the geographic area: DE = Germany
+country=c('US')
+#set the time window
+time=("all")
+#set channels 
+channel='web'
+```
+
+```{r}
+trends = gtrends(keywords, gprop =channel,geo=country, time = time )
+```
+
+```{r}
+#select only interst over time 
+time_trend=trends$interest_over_time
+head(time_trend)
+```
+
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+```{r}
+plot<-ggplot(data=time_trend, aes(x=date, y=hits,group=keyword,col=keyword))+
+  geom_line()+xlab('Time')+ylab('Relative Interest')+ theme_bw()+
+  theme(legend.title = element_blank(),legend.position="bottom",legend.text=element_text(size=12))+ggtitle("Google Search Volume")
+plot
+```
+
+
+```{r}
+write.csv(time_trend, "FILE NAME.csv")
+```
+
+
