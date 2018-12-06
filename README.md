@@ -1,3 +1,5 @@
+If you do not want to load into R, use the RMD file sent via email
+
 To run the notebook, use the RMD file
 To see the notebook chunks, use the HTML file
 
