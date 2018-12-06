@@ -12,13 +12,13 @@ library (gtrendsR)
 plot(gtrendsR::gtrends(keyword = c("CHOOSE A WORD(S)"), geo = "US", time = "2006-01-01 2018-12-05"))
 ```
 
-Create and plot a dataframe comparing Canada and the US
+
 ```{r}
 df <- gtrends(c("YOUR WORD(S)"), geo = c("CA", "US"), time = "2006-01-01 2018-12-05")
 plot(df)
 ```
 
-Create and plot a dataframe comparing two words
+
 ```{r}
 df2 <- gtrends(c("Beto O'Rourke", "Ted Cruz"), geo = c("US"), time = "2017-01-01 2018-12-05")
 plot(df2)
